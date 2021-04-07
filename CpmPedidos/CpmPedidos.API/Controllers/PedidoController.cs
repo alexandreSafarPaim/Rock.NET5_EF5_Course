@@ -1,4 +1,5 @@
 ﻿using System;
+using CpmPedidos.Domain;
 using CpmPedidos.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,12 @@ namespace CpmPedidos.API.Controllers
         {
             var rep = (IPedidoRepository)ServiceProvider.GetService(typeof(IPedidoRepository));
             return rep.PedidosClientes();
+        }
+        [HttpPost]
+        [Route("")]
+        public string SalvarPedido(PedidoDTO pedido)
+        {
+            return GetService<IPedidoRepository>().SalvarPedido(pedido);
         }
     }
 }
