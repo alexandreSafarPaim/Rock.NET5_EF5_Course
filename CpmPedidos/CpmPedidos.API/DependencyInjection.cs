@@ -19,6 +19,7 @@ namespace CpmPedidos.API
         {
             serviceProvider.AddScoped<IProdutoRepository, ProdutoRepository>();
             serviceProvider.AddScoped<IPedidoRepository, PedidoRepository>();
+            serviceProvider.AddScoped<ICidadeRepository, CidadeRepository>();
 
         }
     }

@@ -121,17 +121,5 @@ namespace CpmPedidos.Repository
                 })
                 .FirstOrDefault();
         }
-    
-        private void OrdenarPorNome(ref IQueryable<Produto> query, string ordem)
-        {
-            if (string.IsNullOrEmpty(ordem) || ordem.ToLower() == "asc")
-            {
-                query = query.OrderBy(x => x.Nome);
-            }
-            else
-            {
-                query = query.OrderByDescending(x => x.Nome);
-            }
-        }
     }
 }
