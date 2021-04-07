@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CpmPedidos.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CpmPedidos.API.Controllers
 {
@@ -11,9 +8,22 @@ namespace CpmPedidos.API.Controllers
     [Route("[controller]")]
     public class PedidoController : AppBaseController
     {
-        public PedidoController(IServiceProvider serviceProvider) : base(serviceProvider)
+        public PedidoController(IServiceProvider serviceProvider) : base(serviceProvider) { }
+
+        [HttpGet]
+        [Route("ticket")]
+        public decimal TicketMaximo()
         {
+           var rep = (IPedidoRepository)ServiceProvider.GetService(typeof(IPedidoRepository));
+            return rep.TiketMaximo();
         }
- 
+
+        [HttpGet]
+        [Route("por-cliente")]
+        public dynamic PedidosClientes()
+        {
+            var rep = (IPedidoRepository)ServiceProvider.GetService(typeof(IPedidoRepository));
+            return rep.PedidosClientes();
+        }
     }
 }
